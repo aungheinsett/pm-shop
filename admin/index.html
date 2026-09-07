@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PM Shop - Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <span class="logo-pm">PM</span><span class="logo-store">Shop</span>
+      </div>
+      <button class="sidebar-close" id="sidebarClose"><i class="fas fa-times"></i></button>
+    </div>
+    <nav class="sidebar-nav">
+      <button class="nav-link active" data-page="dashboard">Dashboard</button>
+      <button class="nav-link" data-page="products">Products <span class="nav-badge" id="navProductCount">0</span></button>
+      <button class="nav-link" data-page="categories">Categories</button>
+      <button class="nav-link" data-page="banners">Hero Banners</button>
+      <button class="nav-link" data-page="orders">Orders <span class="nav-badge" id="navOrderCount">0</span></button>
+      <button class="nav-link" data-page="settings">Settings</button>
+      <button class="nav-link" data-page="users">Staff Users</button>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="/" target="_blank" class="view-store"><i class="fas fa-external-link-alt"></i> View Store</a>
+      <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</button>
+    </div>
+  </aside>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Topbar -->
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
+      <h2 class="page-title" id="pageTitle">Dashboard</h2>
+      <div class="topbar-right">
+        <button class="icon-btn" id="refreshBtn" title="Refresh"><i class="fas fa-sync"></i></button>
+        <div class="user-menu">
+          <span class="user-avatar"><i class="fas fa-user"></i></span>
+          <div class="user-info">
+            <span class="user-name" id="userName">Admin</span>
+            <span class="user-role" id="userRole">admin</span>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+
+      <!-- ==== DASHBOARD PAGE ==== -->
+      <section class="page active" id="page-dashboard">
+        <div class="stats-grid" id="statsGrid">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+            <div class="stat-info"><span class="stat-value" id="statRevenue">0 MMK</span><span class="stat-label">Total Revenue</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-shopping-cart"></i></div>
+            <div class="stat-info"><span class="stat-value" id="statOrders">0</span><span class="stat-label">Total Orders</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-box"></i></div>
+            <div class="stat-info"><span class="stat-value" id="statProducts">0</span><span class="stat-label">Products</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-users"></i></div>
+            <div class="stat-info"><span class="stat-value" id="statCustomers">0</span><span class="stat-label">Customers</span></div>
+          </div>
+        </div>
+
+        <div class="stats-grid secondary" id="secondaryStats">
+          <div class="stat-card small">
+            <div class="stat-info"><span class="stat-value" id="statWeek">0 MMK</span><span class="stat-label">Revenue (7 days)</span></div>
+          </div>
+          <div class="stat-card small">
+            <div class="stat-info"><span class="stat-value" id="statMonth">0 MMK</span><span class="stat-label">Revenue (This Month)</span></div>
+          </div>
+          <div class="stat-card small">
+            <div class="stat-info"><span class="stat-value" id="statPending">0</span><span class="stat-label">Pending Orders</span></div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Revenue - Last 12 Months</h3>
+            </div>
+            <div class="chart-container">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+          <div class="card chart-card">
+            <div class="card-header">
+              <h3>Category Sales Breakdown</h3>
+            </div>
+            <div class="chart-container">
+              <canvas id="categoryChart"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="dashboard-grid">
+          <div class="card">
+            <div class="card-header">
+              <h3>Recent Orders</h3>
+              <button class="btn btn-sm" onclick="navigateTo('orders')">View All</button>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Order</th><th>Customer</th><th>Total</th><th>Status</th><th>Date</th></tr>
+                </thead>
+                <tbody id="recentOrdersBody"><tr><td colspan="5" class="empty">Loading...</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3>Top Selling Products</h3>
+            </div>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr><th>#</th><th>Product</th><th>Sold</th><th>Revenue</th></tr>
+                </thead>
+                <tbody id="topProductsBody"><tr><td colspan="4" class="empty">Loading...</td></tr></tbody>
+              </table>
+          </div>
+        </div>
+
+        <!-- Order Detail Modal -->
+        <div class="modal-overlay" id="orderDetailModalOverlay" style="display:none;" onclick="closeOrderDetail()"></div>
+        <div class="modal" id="orderDetailModal" style="display:none;">
+          <div class="modal-header">
+            <h3 id="orderDetailModalTitle">Order Details</h3>
+            <button class="modal-close" onclick="closeOrderDetail()"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="modal-body" id="orderDetailModalBody"></div>
+        </div>
+
+      </section>
+
+      <!-- ==== PRODUCTS PAGE ==== -->
+      <section class="page" id="page-products">
+        <div class="page-toolbar">
+          <div class="toolbar-left">
+            <button class="btn btn-primary" onclick="openProductModal()"><i class="fas fa-plus"></i> Add Product</button>
+            <button class="btn btn-danger" id="bulkDeleteBtn" style="display:none;" onclick="bulkDeleteProducts()"><i class="fas fa-trash"></i> Delete Selected</button>
+          </div>
+          <div class="toolbar-right">
+            <input type="text" class="search-input" id="productSearch" placeholder="Search products...">
+            <select class="filter-select" id="productCategoryFilter">
+              <option value="">All Categories</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" id="selectAllProducts"></th>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price (MMK)</th>
+                  <th>Price (Baht)</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productsBody"><tr><td colspan="7" class="empty">Loading...</td></tr></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="productsPagination"></div>
+        </div>
+
+        <!-- Product Modal -->
+        <div class="modal-overlay" id="productModalOverlay" style="display:none;"></div>
+        <div class="modal" id="productModal" style="display:none;">
+          <div class="modal-header">
+            <h3 id="productModalTitle">Add Product</h3>
+            <button class="modal-close" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="modal-body">
+            <form id="productForm">
+              <input type="hidden" id="pId">
+              <div class="form-grid">
+                <div class="form-group full">
+                  <label>Product Name *</label>
+                  <input type="text" id="pName" required>
+                </div>
+                <div class="form-group">
+                  <label>Category *</label>
+                  <select id="pCategory" required></select>
+                </div>
+                <div class="form-group">
+                  <label>Icon (Font Awesome)</label>
+                  <input type="text" id="pIcon" placeholder="fas fa-shopping-bag">
+                </div>
+                <div class="form-group">
+                  <label>Price (MMK) *</label>
+                  <input type="number" id="pPriceMmk" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label>Price (Baht) *</label>
+                  <input type="number" id="pPriceBaht" min="0" required>
+                </div>
+                <div class="form-group">
+                  <label>Featured</label>
+                  <select id="pFeatured">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                  </select>
+                </div>
+                <div class="form-group full">
+                  <label>Short Description</label>
+                  <input type="text" id="pShortDesc" maxlength="300">
+                </div>
+                <div class="form-group full">
+                  <label>Description</label>
+                  <textarea id="pDescription" rows="3"></textarea>
+                </div>
+                <div class="form-group full">
+                  <label>Product Image</label>
+                  <div class="file-upload" id="productImageUpload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Click to upload product image</p>
+                    <input type="file" id="pImageInput" accept="image/*" hidden>
+                  </div>
+                  <input type="hidden" id="pImage">
+                  <div class="image-preview" id="productImagePreview" style="display:none;">
+                    <img id="productImagePreviewImg" alt="Preview">
+                    <button type="button" class="remove-image" onclick="removeProductImage()"><i class="fas fa-times"></i></button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeProductModal()">Cancel</button>
+            <button class="btn btn-primary" id="saveProductBtn" onclick="saveProduct()">Save Product</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==== CATEGORIES PAGE ==== -->
+      <section class="page" id="page-categories">
+        <div class="page-toolbar">
+          <button class="btn btn-primary" onclick="openCategoryModal()"><i class="fas fa-plus"></i> Add Category</button>
+        </div>
+        <div class="card">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr><th>Name</th><th>Description</th><th>Products</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="categoriesBody"><tr><td colspan="5" class="empty">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="modal-overlay" id="categoryModalOverlay" style="display:none;"></div>
+        <div class="modal" id="categoryModal" style="display:none;">
+          <div class="modal-header">
+            <h3 id="categoryModalTitle">Add Category</h3>
+            <button class="modal-close" onclick="closeCategoryModal()"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="modal-body">
+            <form id="categoryForm">
+              <input type="hidden" id="catId">
+              <div class="form-group">
+                <label>Category Name *</label>
+                <input type="text" id="catName" required>
+              </div>
+              <div class="form-group">
+                <label>Description</label>
+                <textarea id="catDescription" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Status</label>
+                <select id="catActive">
+                  <option value="true">Active</option>
+                  <option value="false">Inactive</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeCategoryModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveCategory()">Save Category</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==== HERO BANNERS PAGE ==== -->
+      <section class="page" id="page-banners">
+        <div class="page-toolbar">
+          <button class="btn btn-primary" onclick="openBannerModal()"><i class="fas fa-plus"></i> Add Banner</button>
+        </div>
+        <div class="card">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr><th>Image</th><th>Title</th><th>Subtitle</th><th>Button</th><th>Order</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="bannersBody"><tr><td colspan="7" class="empty">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="modal-overlay" id="bannerModalOverlay" style="display:none;"></div>
+        <div class="modal" id="bannerModal" style="display:none;">
+          <div class="modal-header">
+            <h3 id="bannerModalTitle">Add Banner</h3>
+            <button class="modal-close" onclick="closeBannerModal()"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="modal-body">
+            <form id="bannerForm">
+              <input type="hidden" id="bannerId">
+              <div class="form-grid">
+                <div class="form-group full">
+                  <label>Title *</label>
+                  <input type="text" id="bannerTitle" required placeholder="e.g. New Season Collection">
+                </div>
+                <div class="form-group full">
+                  <label>Subtitle</label>
+                  <input type="text" id="bannerSubtitle" placeholder="e.g. Premium handbags at unbeatable prices">
+                </div>
+                <div class="form-group">
+                  <label>Button Text</label>
+                  <input type="text" id="bannerBtnText" value="Shop Now">
+                </div>
+                <div class="form-group full">
+                  <label>Button Link</label>
+                  <select id="bannerBtnLink">
+                    <option value="#">None</option>
+                    <option value="#wallets">Wallets Section</option>
+                    <option value="#totebags">Totebags Section</option>
+                    <option value="#brandbags">Brand Bags Section</option>
+                    <option value="#bags">Bags Section</option>
+                    <option value="#keychains">Keychains Section</option>
+                  </select>
+                </div>
+                <div class="form-group full">
+                  <label>Or Link to a Specific Product</label>
+                  <select id="bannerProductLink">
+                    <option value="">-- None --</option>
+                  </select>
+                </div>
+                <div class="form-group full">
+                  <label>Banner Image URL (leave empty for gradient)</label>
+                  <input type="text" id="bannerImageUrl" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group full">
+                  <label>Or Upload Image</label>
+                  <input type="file" id="bannerImageFile" accept="image/*">
+                  <div id="bannerImagePreview" style="margin-top:8px;display:none;">
+                    <img id="bannerImagePreviewImg" style="max-width:200px;border-radius:8px;">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label>Background Color (if no image)</label>
+                  <input type="color" id="bannerBgColor" value="#c0392b">
+                </div>
+                <div class="form-group">
+                  <label>Sort Order</label>
+                  <input type="number" id="bannerSortOrder" min="0" value="0">
+                </div>
+                <div class="form-group">
+                  <label>Status</label>
+                  <select id="bannerActive">
+                    <option value="true">Active</option>
+                    <option value="false">Inactive</option>
+                  </select>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeBannerModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveBanner()">Save Banner</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==== ORDERS PAGE ==== -->
+      <section class="page" id="page-orders">
+        <div class="page-toolbar">
+          <div class="toolbar-left"></div>
+          <div class="toolbar-right">
+            <select class="filter-select" id="orderStatusFilter">
+              <option value="">All Statuses</option>
+              <option value="pending">Pending</option>
+              <option value="confirmed">Confirmed</option>
+              <option value="processing">Processing</option>
+              <option value="shipped">Shipped</option>
+              <option value="delivered">Delivered</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+            <input type="text" class="search-input" id="orderSearch" placeholder="Search orders...">
+          </div>
+        </div>
+        <div class="card">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr><th>Order #</th><th>Customer</th><th>Items</th><th>Total (MMK)</th><th>Payment</th><th>Status</th><th>Date</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="ordersBody"><tr><td colspan="8" class="empty">Loading...</td></tr></tbody>
+            </table>
+          </div>
+          <div class="pagination" id="ordersPagination"></div>
+        </div>
+      </section>
+
+      <!-- ==== SETTINGS PAGE ==== -->
+      <section class="page" id="page-settings">
+        <div class="card">
+          <div class="card-header"><h3>General Settings</h3></div>
+          <div class="card-body">
+            <form id="settingsForm">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Store Name</label>
+                  <input type="text" id="sName">
+                </div>
+                <div class="form-group">
+                  <label>Store Tagline</label>
+                  <input type="text" id="sTagline">
+                </div>
+                <div class="form-group">
+                  <label>Store Email</label>
+                  <input type="email" id="sEmail">
+                </div>
+                <div class="form-group">
+                  <label>Store Phone</label>
+                  <input type="text" id="sPhone">
+                </div>
+                <div class="form-group full">
+                  <label>Store Address</label>
+                  <input type="text" id="sAddress">
+                </div>
+              </div>
+              <h4 class="form-section-title">Social Media</h4>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Facebook URL</label>
+                  <input type="text" id="sFacebook">
+                </div>
+                <div class="form-group">
+                  <label>Instagram URL</label>
+                  <input type="text" id="sInstagram">
+                </div>
+                <div class="form-group">
+                  <label>Viber</label>
+                  <input type="text" id="sViber">
+                </div>
+                <div class="form-group">
+                  <label>TikTok</label>
+                  <input type="text" id="sTiktok">
+                </div>
+              </div>
+              <h4 class="form-section-title">SEO</h4>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Meta Title</label>
+                  <input type="text" id="sSeoTitle">
+                </div>
+                <div class="form-group full">
+                  <label>Meta Description</label>
+                  <textarea id="sSeoDescription" rows="2"></textarea>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Settings</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==== USERS PAGE ==== -->
+      <section class="page" id="page-users">
+        <div class="page-toolbar">
+          <button class="btn btn-primary" onclick="openUserModal()"><i class="fas fa-plus"></i> Add Staff</button>
+        </div>
+        <div class="card">
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr><th>Name</th><th>Email</th><th>Role</th><th>Phone</th><th>Last Login</th><th>Status</th><th>Actions</th></tr>
+              </thead>
+              <tbody id="usersBody"><tr><td colspan="7" class="empty">Loading...</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="modal-overlay" id="userModalOverlay" style="display:none;"></div>
+        <div class="modal" id="userModal" style="display:none;">
+          <div class="modal-header">
+            <h3 id="userModalTitle">Add Staff User</h3>
+            <button class="modal-close" onclick="closeUserModal()"><i class="fas fa-times"></i></button>
+          </div>
+          <div class="modal-body">
+            <form id="userForm">
+              <input type="hidden" id="uId">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" id="uName" required>
+              </div>
+              <div class="form-group">
+                <label>Email *</label>
+                <input type="email" id="uEmail" required>
+              </div>
+              <div class="form-group">
+                <label>Password (min 6 chars)</label>
+                <input type="password" id="uPassword">
+              </div>
+              <div class="form-group">
+                <label>Role</label>
+                <select id="uRole">
+                  <option value="admin">Admin</option>
+                  <option value="manager">Manager</option>
+                  <option value="staff">Staff</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="text" id="uPhone">
+              </div>
+              <div class="form-group">
+                <label>Status</label>
+                <select id="uActive">
+                  <option value="true">Active</option>
+                  <option value="false">Inactive</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" onclick="closeUserModal()">Cancel</button>
+            <button class="btn btn-primary" onclick="saveUser()">Save User</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>

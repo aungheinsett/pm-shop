@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PM Shop - Premium Handbags Store</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <span><i class="fas fa-phone"></i> <span id="topPhone">+95 9-XXX-XXX-XXX</span></span>
+      <span><i class="fas fa-envelope"></i> <span id="topEmail">support@pmonline.com</span></span>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+      <a href="#" class="logo logo-center">
+        <span class="logo-pm">PM</span>
+        <span class="logo-store">Shop</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Slide Drawer -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <aside class="slide-drawer" id="slideDrawer">
+    <div class="drawer-header">
+      <div class="drawer-logo">
+        <span class="logo-pm">PM</span><span class="logo-store">Shop</span>
+      </div>
+      <button class="drawer-close" id="drawerClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="drawer-body">
+      <p class="drawer-title">Browse Categories</p>
+      <ul class="drawer-menu">
+        <li>
+          <a href="#wallets" class="drawer-item active" data-cat="wallets">
+            <span class="di-text">Wallets</span>
+            <span class="di-count" data-count="wallets">0</span>
+            <i class="fas fa-chevron-right di-arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#totebags" class="drawer-item" data-cat="totebags">
+            <span class="di-text">Tote Bags</span>
+            <span class="di-count" data-count="totebags">0</span>
+            <i class="fas fa-chevron-right di-arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#brandbags" class="drawer-item" data-cat="brandbags">
+            <span class="di-text">Brand Bags</span>
+            <span class="di-count" data-count="brandbags">0</span>
+            <i class="fas fa-chevron-right di-arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#bags" class="drawer-item" data-cat="bags">
+            <span class="di-text">Bags</span>
+            <span class="di-count" data-count="bags">0</span>
+            <i class="fas fa-chevron-right di-arrow"></i>
+          </a>
+        </li>
+        <li>
+          <a href="#keychains" class="drawer-item" data-cat="keychains">
+            <span class="di-text">Keychains</span>
+            <span class="di-count" data-count="keychains">0</span>
+            <i class="fas fa-chevron-right di-arrow"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="drawer-footer">
+      <a href="#terms" class="drawer-footer-link"><i class="fas fa-file-contract"></i> Terms & Conditions</a>
+      <a href="#" id="drawerPhone" class="drawer-footer-link"><i class="fas fa-phone"></i> +95 9-XXX-XXX-XXX</a>
+      <p class="drawer-copy">&copy; 2026 PM Shop</p>
+    </div>
+  </aside>
+
+  <!-- Hero Slider -->
+  <section class="hero-slider" id="heroSlider">
+    <div class="slides-container" id="slidesContainer">
+      <div class="slide active" style="background: linear-gradient(135deg, #1a0f0f 0%, #5c1a1a 50%, #a93226 100%);">
+        <div class="slide-content">
+          <span class="slide-tag">Welcome</span>
+          <h1>Premium <span class="highlight">Handbags</span> Store</h1>
+          <p>Discover luxury bags at unbeatable prices</p>
+          <a href="#wallets" class="btn btn-primary">Shop Now</a>
+        </div>
+        <div class="slide-visual">
+          <div class="floating-bag bag-1"><i class="fas fa-shopping-bag"></i></div>
+          <div class="floating-bag bag-2"><i class="fas fa-heart"></i></div>
+          <div class="floating-bag bag-3"><i class="fas fa-gem"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="slider-controls">
+      <button class="hero-prev" id="heroPrev"><i class="fas fa-arrow-left"></i></button>
+      <div class="slider-dots" id="sliderDots"></div>
+      <button class="hero-next" id="heroNext"><i class="fas fa-arrow-right"></i></button>
+    </div>
+  </section>
+
+  <!-- Search Bar -->
+  <div class="search-section">
+    <div class="container">
+      <div class="search-bar-full">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" placeholder="Search bags, wallets, accessories..." id="searchInput" class="search-input-main">
+      </div>
+    </div>
+  </div>
+
+  <!-- Wallets Section -->
+  <section class="product-section" id="wallets">
+    <div class="container">
+      <div class="section-header">
+        <h2>Wallets</h2>
+        <p>Premium leather wallets for everyday use</p>
+      </div>
+      <div class="product-grid" id="walletsGrid"></div>
+      <div id="walletsLoadMore" style="text-align:center;margin-top:20px;"></div>
+    </div>
+  </section>
+
+  <!-- Totebags Section -->
+  <section class="product-section" id="totebags">
+    <div class="container">
+      <div class="section-header">
+        <h2>Totebags</h2>
+        <p>Spacious and stylish tote bags</p>
+      </div>
+      <div class="product-grid" id="totebagsGrid"></div>
+      <div id="totebagsLoadMore" style="text-align:center;margin-top:20px;"></div>
+    </div>
+  </section>
+
+  <!-- Brand Bags Section -->
+  <section class="product-section" id="brandbags">
+    <div class="container">
+      <div class="section-header">
+        <h2>Brand Bags</h2>
+        <p>Authentic designer brand bags</p>
+      </div>
+      <div class="product-grid" id="brandbagsGrid"></div>
+      <div id="brandbagsLoadMore" style="text-align:center;margin-top:20px;"></div>
+    </div>
+  </section>
+
+  <!-- Bags Section -->
+  <section class="product-section" id="bags">
+    <div class="container">
+      <div class="section-header">
+        <h2>Bags</h2>
+        <p>Everyday bags for every style</p>
+      </div>
+      <div class="product-grid" id="bagsGrid"></div>
+      <div id="bagsLoadMore" style="text-align:center;margin-top:20px;"></div>
+    </div>
+  </section>
+
+  <!-- Keychains Section -->
+  <section class="product-section" id="keychains">
+    <div class="container">
+      <div class="section-header">
+        <h2>Keychains</h2>
+        <p>Charming accessories for your bags</p>
+      </div>
+      <div class="product-grid" id="keychainsGrid"></div>
+      <div id="keychainsLoadMore" style="text-align:center;margin-top:20px;"></div>
+    </div>
+  </section>
+
+  <!-- Terms & Conditions -->
+  <section class="terms-section" id="terms">
+    <div class="container">
+      <div class="section-header">
+        <h2><i class="fas fa-file-contract"></i> Terms & Conditions</h2>
+      </div>
+      <div class="terms-content">
+        <div class="terms-grid">
+          <div class="terms-card">
+            <h3><i class="fas fa-shopping-cart"></i> Ordering</h3>
+            <ul>
+              <li>All orders are subject to product availability.</li>
+              <li>Prices are listed in both MMK and Thai Baht for your convenience.</li>
+              <li>Exchange rates are updated daily and may vary slightly.</li>
+              <li>PM Shop reserves the right to refuse or cancel any order.</li>
+            </ul>
+          </div>
+          <div class="terms-card">
+            <h3><i class="fas fa-money-bill-wave"></i> Pricing</h3>
+            <ul>
+              <li>All prices include applicable taxes unless stated otherwise.</li>
+              <li>Promotional prices are valid for a limited time only.</li>
+              <li>Prices shown in Baht are approximate conversions.</li>
+              <li>MMK is the primary currency for all transactions.</li>
+            </ul>
+          </div>
+          <div class="terms-card">
+            <h3><i class="fas fa-shipping-fast"></i> Shipping</h3>
+            <ul>
+              <li>Free shipping within Myanmar for orders over 50,000 MMK.</li>
+              <li>Cross-border shipping to Thailand available.</li>
+              <li>Delivery times: 3-5 business days (domestic), 7-14 days (international).</li>
+              <li>Tracking information provided for all shipments.</li>
+            </ul>
+          </div>
+          <div class="terms-card">
+            <h3><i class="fas fa-undo-alt"></i> Returns & Exchanges</h3>
+            <ul>
+              <li>Items can be returned within 7 days of delivery.</li>
+              <li>Products must be unused and in original packaging.</li>
+              <li>Refunds processed in the original payment currency.</li>
+              <li>Exchanges are subject to stock availability.</li>
+            </ul>
+          </div>
+          <div class="terms-card">
+            <h3><i class="fas fa-lock"></i> Privacy</h3>
+            <ul>
+              <li>Your personal data is protected under our privacy policy.</li>
+              <li>Payment information is encrypted and secure.</li>
+              <li>We never share customer data with third parties.</li>
+              <li>Cookies used to enhance your shopping experience.</li>
+            </ul>
+          </div>
+          <div class="terms-card">
+            <h3><i class="fas fa-headset"></i> Customer Support</h3>
+            <ul>
+              <li>Reach us via phone, email, or live chat.</li>
+              <li>Support available 24/7 for all inquiries.</li>
+              <li>Complaints addressed within 48 hours.</li>
+              <li>Dedicated support for order tracking issues.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="terms-update"><i class="fas fa-info-circle"></i> Last updated: January 2026. PM Shop reserves the right to update these terms at any time.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <div class="newsletter-inner">
+        <div class="newsletter-text">
+          <h2>Stay in the Loop</h2>
+          <p>Subscribe for exclusive deals and new arrivals</p>
+        </div>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="footer-logo">
+        <span class="logo-pm">PM</span><span class="logo-store">Shop</span>
+          </div>
+          <p>Your premier destination for quality handbags, wallets, and accessories.</p>
+          <div class="social-links">
+            <a href="#" id="linkFacebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" id="linkInstagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#" id="linkViber" target="_blank"><i class="fab fa-viber"></i></a>
+            <a href="#" id="linkTiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#wallets">Wallets</a></li>
+            <li><a href="#totebags">Totebags</a></li>
+            <li><a href="#brandbags">Brand Bags</a></li>
+            <li><a href="#bags">Bags</a></li>
+            <li><a href="#keychains">Keychains</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Info</h4>
+          <ul class="contact-info">
+            <li><i class="fas fa-map-marker-alt"></i> <span id="footerAddress">Yangon, Myanmar</span></li>
+            <li><i class="fas fa-phone"></i> <span id="footerPhone">+95 9-XXX-XXX-XXX</span></li>
+            <li><i class="fas fa-envelope"></i> <span id="footerEmail">support@pmonline.com</span></li>
+            <li><i class="fas fa-clock"></i> Mon - Sat: 9AM - 8PM</li>
+          </ul>
+          <div class="currency-note">
+            <p><i class="fas fa-coins"></i> Prices in MMK & Thai Baht</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 PM Shop. All rights reserved.</p>
+        <div class="payment-methods">
+          <span>We Accept:</span>
+          <i class="fas fa-money-bill-wave" title="MMK"></i>
+          <i class="fas fa-money-bill" title="Thai Baht"></i>
+          <i class="fas fa-mobile-alt" title="Mobile Pay"></i>
+          <i class="fas fa-university" title="Bank Transfer"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Product Detail Overlay -->
+  <div class="product-detail-overlay" id="productDetailOverlay">
+    <div class="product-detail-container" id="productDetailContainer"></div>
+  </div>
+
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+  <script src="script.js"></script>
+  <script>if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; } window.scrollTo(0, 0);</script>
+</body>
+</html>
