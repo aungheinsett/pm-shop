@@ -276,7 +276,7 @@ async function loadProducts() {
 
     const body = document.getElementById('productsBody');
     if (!data.products || data.products.length === 0) {
-      body.innerHTML = '<tr><td colspan="7" class="empty">No products found</td></tr>';
+      body.innerHTML = '<tr><td colspan="8" class="empty">No products found</td></tr>';
     } else {
       body.innerHTML = data.products.map(p => `
         <tr>
@@ -293,6 +293,7 @@ async function loadProducts() {
           <td>${p.category?.name || 'N/A'}</td>
           <td class="product-name-main">${formatMMK(p.priceMmk)}</td>
           <td>฿${(p.priceBaht || 0).toLocaleString()}</td>
+          <td>${p.stock}</td>
           <td>
             <span class="status-badge status-${p.isActive ? 'true' : 'false'}">${p.isActive ? 'Active' : 'Inactive'}</span>
           </td>
@@ -385,6 +386,7 @@ async function openProductModal(id = null) {
       document.getElementById('pIcon').value = p.icon || '';
       document.getElementById('pPriceMmk').value = p.priceMmk;
       document.getElementById('pPriceBaht').value = p.priceBaht || 0;
+      document.getElementById('pStock').value = p.stock;
       document.getElementById('pFeatured').value = p.isFeatured ? 'true' : 'false';
       document.getElementById('pShortDesc').value = p.shortDescription || '';
       document.getElementById('pDescription').value = p.description || '';
@@ -429,6 +431,7 @@ async function saveProduct() {
     icon: document.getElementById('pIcon').value || 'fas fa-box',
     priceMmk: parseFloat(document.getElementById('pPriceMmk').value),
     priceBaht: parseFloat(document.getElementById('pPriceBaht').value) || 0,
+    stock: parseInt(document.getElementById('pStock').value) || 0,
     isFeatured: document.getElementById('pFeatured').value === 'true',
     shortDescription: document.getElementById('pShortDesc').value,
     description: document.getElementById('pDescription').value,
