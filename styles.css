@@ -4,6 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+html, body { overflow-x: hidden; width: 100%; }
 
 :root {
   --primary: #c0392b;
@@ -1891,9 +1892,12 @@ img { max-width: 100%; }
   .top-bar span:first-child,
   .top-bar span:nth-child(2) { display: none; }
 
-  .header-inner { padding: 12px 16px; }
+  .header-inner { padding: 18px 16px; }
   .search-bar { display: none; }
-  .logo { font-size: 1.5rem; }
+  .logo { font-size: 1.8rem; }
+  .logo-pm { font-size: 1.8rem; }
+  .logo-store { font-size: 1.4rem; }
+  .menu-btn { font-size: 1.3rem; }
 
   .hero-slider { height: 400px; }
   .slide-content h1 { font-size: 2rem; }
@@ -1903,7 +1907,7 @@ img { max-width: 100%; }
 
   .terms-grid { grid-template-columns: 1fr; }
 
-  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
   .newsletter-inner { flex-direction: column; text-align: center; }
   .newsletter-form { max-width: 100%; flex-direction: column; }
@@ -1915,10 +1919,17 @@ img { max-width: 100%; }
 }
 
 @media (max-width: 480px) {
-  .product-grid { grid-template-columns: 1fr; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .product-card .product-image { height: 160px; }
+  .product-card .product-info { padding: 8px 10px; }
+  .product-card .product-name { font-size: 0.85rem; }
+  .product-card .price-mmk { font-size: 0.85rem; }
+  .product-card .price-baht { font-size: 0.75rem; }
   .feature-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .feature-item { padding: 20px 12px; }
   .slide-content h1 { font-size: 1.6rem; }
   .hero-slider { height: 340px; }
+  .section-header h2 { font-size: 1.4rem; }
+  body { overflow-x: hidden; }
   .slide-drawer { width: 85vw; }
 }
