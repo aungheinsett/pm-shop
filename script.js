@@ -153,6 +153,7 @@ async function loadMoreProducts(catKey) {
         icon: p.icon || 'fas fa-shopping-bag',
         price_mmk: p.priceMmk,
         price_baht: p.priceBaht || 0,
+        stock: p.stock || 0,
         description: p.description || '',
         images: p.images || []
       });
@@ -209,6 +210,7 @@ async function loadFromApi() {
             icon: p.icon || 'fas fa-shopping-bag',
             price_mmk: p.priceMmk,
             price_baht: p.priceBaht || 0,
+            stock: p.stock || 0,
             description: p.description || '',
             images: p.images || []
           });
@@ -394,6 +396,12 @@ function openProductDetail(id) {
           <div class="detail-desc">
             <h3>Description</h3>
             <p>${product.description || 'No description available for this product.'}</p>
+          </div>
+          <div class="detail-stock">
+            <span class="${product.stock > 0 ? 'in-stock' : 'out-stock'}">
+              <i class="fas ${product.stock > 0 ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+              ${product.stock > 0 ? `In Stock (${product.stock} available)` : 'Out of Stock'}
+            </span>
           </div>
         </div>
       </div>
