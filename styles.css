@@ -1898,6 +1898,7 @@ img { max-width: 100%; }
   .logo-pm { font-size: 1.8rem; }
   .logo-store { font-size: 1.4rem; }
   .menu-btn { font-size: 1.3rem; }
+  .header { width: 100vw; margin-left: calc(-50vw + 50%); }
 
   .hero-slider { height: 400px; }
   .slide-content h1 { font-size: 2rem; }
