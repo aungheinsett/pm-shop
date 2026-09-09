@@ -412,10 +412,12 @@ img { max-width: 100%; }
   transition: left 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 4px 0 30px rgba(0,0,0,0.15);
   overflow-y: auto;
+  visibility: hidden;
 }
 
 .slide-drawer.active {
   left: 0;
+  visibility: visible;
 }
 
 .drawer-header {
