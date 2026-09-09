@@ -1899,6 +1899,10 @@ img { max-width: 100%; }
   .logo-store { font-size: 1.4rem; }
   .menu-btn { font-size: 1.3rem; }
   .header { width: 100vw; margin-left: calc(-50vw + 50%); }
+  .hero-slider { width: 100vw; margin-left: calc(-50vw + 50%); }
+  .product-section { width: 100vw; margin-left: calc(-50vw + 50%); }
+  .newsletter { width: 100vw; margin-left: calc(-50vw + 50%); }
+  footer { width: 100vw; margin-left: calc(-50vw + 50%); }
 
   .hero-slider { height: 400px; }
   .slide-content h1 { font-size: 2rem; }
