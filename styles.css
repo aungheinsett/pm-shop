@@ -431,11 +431,11 @@ img { max-width: 100%; }
 
 .drawer-logo {
   font-family: 'Playfair Display', serif;
-  font-size: 0.75rem;
-  letter-spacing: 2px;
+  font-size: 0.65rem;
+  letter-spacing: 4px;
 }
 
-.drawer-logo .logo-pm { color: var(--gold); margin-right: 4px; }
+.drawer-logo .logo-pm { color: var(--gold); margin-right: 6px; }
 .drawer-logo .logo-store { color: var(--gold); }
 
 .drawer-close {
