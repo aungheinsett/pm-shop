@@ -149,9 +149,9 @@ img { max-width: 100%; }
 }
 
 .logo-store {
-  font-weight: 400;
-  color: var(--gold);
-  font-size: 0.85em;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1em;
 }
 
 .search-bar {
@@ -423,8 +423,8 @@ img { max-width: 100%; }
   font-size: 1.6rem;
 }
 
-.drawer-logo .logo-pm { color: #ffffff; }
-.drawer-logo .logo-store { color: var(--gold); }
+.drawer-logo .logo-pm { color: var(--primary); }
+.drawer-logo .logo-store { color: var(--primary); }
 
 .drawer-close {
   background: rgba(255,255,255,0.2);
@@ -1141,8 +1141,8 @@ img { max-width: 100%; }
   margin-bottom: 12px;
 }
 
-.footer-logo .logo-pm { color: var(--primary-light); }
-.footer-logo .logo-store { color: var(--gold); }
+.footer-logo .logo-pm { color: var(--primary); }
+.footer-logo .logo-store { color: var(--primary); }
 
 .footer-col p {
   font-size: 0.9rem;
