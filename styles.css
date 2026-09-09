@@ -29,6 +29,9 @@ html, body { overflow-x: hidden; width: 100%; max-width: 100vw; }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -37,6 +40,9 @@ body {
   background: var(--cream);
   line-height: 1.6;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 .container {
@@ -576,6 +582,8 @@ img { max-width: 100%; }
   margin-top: 10px;
   text-align: center;
 }
+
+section { margin: 0; padding: 0; }
 
 /* ===== HERO SLIDER ===== */
 .hero-slider {
@@ -1904,7 +1912,7 @@ img { max-width: 100%; }
   .menu-btn { font-size: 1.3rem; }
   .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
   .search-section { display: block; }
-  .hero-slider { margin-top: 140px; width: 100%; margin-left: 0; margin-right: 0; }
+  .hero-slider { margin-top: 140px; }
   body { overflow-x: hidden; }
 
   .hero-slider { height: 400px; }
