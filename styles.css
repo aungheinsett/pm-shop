@@ -1896,7 +1896,7 @@ img { max-width: 100%; }
   .search-bar { display: none; }
   .logo { font-size: 1.8rem; }
   .logo-pm { font-size: 1.8rem; }
-  .logo-store { font-size: 1.4rem; }
+  .logo-store { font-size: 1.8rem; }
   .menu-btn { font-size: 1.3rem; }
   .header { width: 100vw; margin-left: calc(-50vw + 50%); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
   .search-section { display: block; }
