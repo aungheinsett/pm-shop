@@ -431,7 +431,7 @@ img { max-width: 100%; }
 
 .drawer-logo {
   font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
+  font-size: 0.95rem;
 }
 
 .drawer-logo .logo-pm { color: var(--gold); }
