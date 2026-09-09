@@ -1897,7 +1897,7 @@ img { max-width: 100%; }
   .logo { font-size: 1.8rem; }
   .logo-pm { font-size: 1.8rem; }
   .logo-store { font-size: 1.4rem; }
-  .menu-btn { font-size: 1.3rem; }
+  .menu-btn { font-size: 1.3rem; position: fixed; left: 16px; top: 16px; z-index: 200; background: var(--white); width: 40px; height: 40px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
   .header { width: 100vw; margin-left: calc(-50vw + 50%); }
   .hero-slider { width: 100vw; margin-left: calc(-50vw + 50%); }
   .product-section { width: 100vw; margin-left: calc(-50vw + 50%); }
@@ -1925,16 +1925,24 @@ img { max-width: 100%; }
 
 @media (max-width: 480px) {
   .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .product-card .product-image { height: 160px; }
-  .product-card .product-info { padding: 8px 10px; }
-  .product-card .product-name { font-size: 0.85rem; }
-  .product-card .price-mmk { font-size: 0.85rem; }
-  .product-card .price-baht { font-size: 0.75rem; }
+  .product-card .product-image { height: 150px; }
+  .product-card .product-info { padding: 8px 8px; }
+  .product-card .product-name { font-size: 0.8rem; line-height: 1.3; }
+  .product-card .price-mmk { font-size: 0.8rem; }
+  .product-card .price-baht { font-size: 0.7rem; }
+  .product-card .product-category { font-size: 0.65rem; }
   .feature-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
   .feature-item { padding: 20px 12px; }
   .slide-content h1 { font-size: 1.6rem; }
   .hero-slider { height: 340px; }
   .section-header h2 { font-size: 1.4rem; }
+  .section-header p { font-size: 0.85rem; }
   body { overflow-x: hidden; }
   .slide-drawer { width: 85vw; }
+  .footer-grid { gap: 24px; }
+  .footer-col h4 { font-size: 1rem; }
+  .footer-col p, .footer-col li { font-size: 0.85rem; }
+  .contact-info li { font-size: 0.85rem; }
+  .newsletter-inner { padding: 30px 20px; }
+  .newsletter h2 { font-size: 1.3rem; }
 }
