@@ -1897,9 +1897,9 @@ img { max-width: 100%; }
   .logo { font-size: 1.8rem; }
   .logo-pm { font-size: 1.8rem; }
   .logo-store { font-size: 1.4rem; }
-  .menu-btn { font-size: 1.3rem; position: fixed; left: 16px; top: 16px; z-index: 200; background: var(--white); width: 40px; height: 40px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-  .header { width: 100vw; margin-left: calc(-50vw + 50%); }
-  .hero-slider { width: 100vw; margin-left: calc(-50vw + 50%); }
+  .menu-btn { font-size: 1.3rem; }
+  .header { width: 100vw; margin-left: calc(-50vw + 50%); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+  .hero-slider { width: 100vw; margin-left: calc(-50vw + 50%); margin-top: 80px; }
   .product-section { width: 100vw; margin-left: calc(-50vw + 50%); }
   .newsletter { width: 100vw; margin-left: calc(-50vw + 50%); }
   footer { width: 100vw; margin-left: calc(-50vw + 50%); }
