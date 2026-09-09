@@ -582,6 +582,7 @@ img { max-width: 100%; }
   position: relative;
   height: 520px;
   overflow: hidden;
+  background: var(--dark);
 }
 
 .slides-container {
@@ -1903,7 +1904,7 @@ img { max-width: 100%; }
   .menu-btn { font-size: 1.3rem; }
   .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
   .search-section { display: block; }
-  .hero-slider { margin-top: 140px; }
+  .hero-slider { margin-top: 140px; width: 100%; margin-left: 0; margin-right: 0; }
   body { overflow-x: hidden; }
 
   .hero-slider { height: 400px; }
