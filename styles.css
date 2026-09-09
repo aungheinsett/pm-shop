@@ -434,8 +434,8 @@ img { max-width: 100%; }
   font-size: 1.6rem;
 }
 
-.drawer-logo .logo-pm { color: var(--primary); }
-.drawer-logo .logo-store { color: var(--primary); }
+.drawer-logo .logo-pm { color: var(--gold); }
+.drawer-logo .logo-store { color: var(--gold); }
 
 .drawer-close {
   background: rgba(255,255,255,0.2);
