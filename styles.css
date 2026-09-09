@@ -1901,13 +1901,10 @@ img { max-width: 100%; }
   .logo-pm { font-size: 1.8rem; }
   .logo-store { font-size: 1.8rem; }
   .menu-btn { font-size: 1.3rem; }
-  .header { width: 100vw; margin-left: calc(-50vw + 50%); position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
+  .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; }
   .search-section { display: block; }
-  .hero-slider { width: 100vw; margin-left: calc(-50vw + 50%); margin-top: 140px; }
-  .product-section { width: 100vw; margin-left: calc(-50vw + 50%); }
-  .newsletter { width: 100vw; margin-left: calc(-50vw + 50%); }
-  footer { width: 100vw; margin-left: calc(-50vw + 50%); }
-  .terms-section { width: 100vw; margin-left: calc(-50vw + 50%); }
+  .hero-slider { margin-top: 140px; }
+  body { overflow-x: hidden; }
 
   .hero-slider { height: 400px; }
   .slide-content h1 { font-size: 2rem; }
