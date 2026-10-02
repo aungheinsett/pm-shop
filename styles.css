@@ -1975,12 +1975,12 @@ section { margin: 0; padding: 0; }
   align-items: center;
   gap: 12px;
   padding: 13px 16px;
-  color: var(--white);
+  color: var(--dark);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
   transition: background 0.2s;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .chat-popup-item:last-child {
@@ -1988,7 +1988,7 @@ section { margin: 0; padding: 0; }
 }
 
 .chat-popup-item:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.35);
 }
 
 .chat-popup-item i {
