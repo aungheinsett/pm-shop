@@ -1925,10 +1925,13 @@ section { margin: 0; padding: 0; }
   position: absolute;
   bottom: 70px;
   right: 0;
-  background: var(--white);
-  border-radius: 14px;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.18);
-  min-width: 200px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  min-width: 190px;
   overflow: hidden;
   opacity: 0;
   visibility: hidden;
@@ -1972,12 +1975,12 @@ section { margin: 0; padding: 0; }
   align-items: center;
   gap: 12px;
   padding: 13px 16px;
-  color: var(--dark);
+  color: var(--white);
   text-decoration: none;
   font-size: 0.9rem;
   font-weight: 500;
   transition: background 0.2s;
-  border-bottom: 1px solid var(--gray-light);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .chat-popup-item:last-child {
@@ -1985,7 +1988,7 @@ section { margin: 0; padding: 0; }
 }
 
 .chat-popup-item:hover {
-  background: var(--gray-light);
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .chat-popup-item i {
