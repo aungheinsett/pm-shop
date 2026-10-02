@@ -18,7 +18,7 @@ const settingsSchema = new mongoose.Schema({
   },
   social: {
     facebook: { type: String, default: '' },
-    telegram: { type: String, default: '' },
+    telegram: { type: String, default: 'https://t.me/Pmshop16' },
     tiktok: { type: String, default: '' },
     viber: { type: String, default: '' }
   },
