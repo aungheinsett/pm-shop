@@ -770,9 +770,13 @@ async function loadSettings() {
     }
     const social = s.social || {};
     if (social.facebook) document.getElementById('linkFacebook').href = social.facebook;
-    if (social.instagram) document.getElementById('linkInstagram').href = social.instagram;
-    if (social.viber) document.getElementById('linkViber').href = social.viber;
+    if (social.telegram) document.getElementById('linkTelegram').href = social.telegram;
     if (social.tiktok) document.getElementById('linkTiktok').href = social.tiktok;
+    if (social.viber) document.getElementById('linkViber').href = social.viber;
+    // Update floating chat popup links
+    if (social.facebook) document.getElementById('chatFacebook').href = social.facebook;
+    if (social.telegram) document.getElementById('chatTelegram').href = social.telegram;
+    if (social.tiktok) document.getElementById('chatTiktok').href = social.tiktok;
   } catch (err) {}
 }
 
@@ -786,7 +790,27 @@ document.addEventListener('DOMContentLoaded', () => {
   initBackToTop();
   initNewsletter();
   initSearch();
+  initChat();
 
   document.getElementById('heroPrev').addEventListener('click', prevSlide);
   document.getElementById('heroNext').addEventListener('click', nextSlide);
 });
+
+// ===== FLOATING CHAT =====
+function initChat() {
+  const btn = document.getElementById('chatFloatBtn');
+  const popup = document.getElementById('chatPopup');
+  const closeBtn = document.getElementById('chatPopupClose');
+  if (!btn || !popup) return;
+
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    popup.classList.toggle('open');
+  });
+
+  closeBtn.addEventListener('click', () => popup.classList.remove('open'));
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.chat-float')) popup.classList.remove('open');
+  });
+}

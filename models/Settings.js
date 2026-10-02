@@ -18,9 +18,9 @@ const settingsSchema = new mongoose.Schema({
   },
   social: {
     facebook: { type: String, default: '' },
-    instagram: { type: String, default: '' },
-    viber: { type: String, default: '' },
-    tiktok: { type: String, default: '' }
+    telegram: { type: String, default: '' },
+    tiktok: { type: String, default: '' },
+    viber: { type: String, default: '' }
   },
   seo: {
     title: { type: String, default: 'PM Online - Premium Handbags Store' },

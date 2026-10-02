@@ -850,9 +850,9 @@ async function loadSettings() {
     document.getElementById('sPhone').value = s.storePhone || '';
     document.getElementById('sAddress').value = s.storeAddress || '';
     document.getElementById('sFacebook').value = s.social?.facebook || '';
-    document.getElementById('sInstagram').value = s.social?.instagram || '';
-    document.getElementById('sViber').value = s.social?.viber || '';
+    document.getElementById('sTelegram').value = s.social?.telegram || '';
     document.getElementById('sTiktok').value = s.social?.tiktok || '';
+    document.getElementById('sViber').value = s.social?.viber || '';
     document.getElementById('sSeoTitle').value = s.seo?.title || '';
     document.getElementById('sSeoDescription').value = s.seo?.description || '';
   } catch (err) {
@@ -871,9 +871,9 @@ document.getElementById('settingsForm').addEventListener('submit', async (e) => 
       storeAddress: document.getElementById('sAddress').value,
       social: {
         facebook: document.getElementById('sFacebook').value,
-        instagram: document.getElementById('sInstagram').value,
-        viber: document.getElementById('sViber').value,
-        tiktok: document.getElementById('sTiktok').value
+        telegram: document.getElementById('sTelegram').value,
+        tiktok: document.getElementById('sTiktok').value,
+        viber: document.getElementById('sViber').value
       },
       seo: {
         title: document.getElementById('sSeoTitle').value,
